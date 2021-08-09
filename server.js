@@ -30,6 +30,13 @@ app.get("/api/quotes", (req, res, next) => {
   }
 });
 
+app.post("/api/quotes", (req, res, next) => {
+  //requires a quote and author from the query string:
+  const newQ = req.query;
+  res.send(newQ);
+  // res.status(201).send();
+});
+
 //listener:
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}....`);
