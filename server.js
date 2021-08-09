@@ -17,17 +17,17 @@ app.get("/api/quotes/random", (req, res, next) => {
 });
 
 app.get("/api/quotes", (req, res, next) => {
-  //   if (req.query == false) {
-  //     res.send(quotes);
-  //   } else if (req.query.person) {
-  //     const personQarray = [];
-  //     for (var i = 0; i < quotes.length; i++) {
-  //       if (quotes.author == req.query.person) {
-  //         personQarray.push(quotes.author);
-  //       }
-  //     }
-  //     res.send(personQarray);
-  res.send(quotes);
+  if (req.query.person) {
+    let responseArr = [];
+    for (var i = 0; i < quotes.length; i++) {
+      if (quotes[i].person == req.query.person) {
+        responseArr.push(quotes[i]);
+      }
+    }
+    res.send(responseArr);
+  } else {
+    res.send(quotes);
+  }
 });
 
 //listener:
