@@ -32,7 +32,10 @@ app.get("/api/quotes", (req, res, next) => {
 
 app.post("/api/quotes", (req, res, next) => {
   //requires a quote and author from the query string:
-  const newQ = req.query;
+  const newQ = {};
+  newQ.quote = req.query.quote;
+  newQ.person = req.query.person;
+  quotes.push(newQ);
   res.send(newQ);
   // res.status(201).send();
 });
