@@ -43,6 +43,20 @@ app.post("/api/quotes", (req, res, next) => {
   }
 });
 
+app.delete("/api/quotes", (req, res, next) => {
+  if (req.query.person) {
+    const targetAuthor = req.query.person;
+    for (var i = 0; i < quotes.length; i++) {
+      if (quotes[i].person == targetAuthor) {
+        quotes.splice(i, 1);
+      }
+    }
+    res.status(204).send();
+  } else {
+    res.status(400).send();
+  }
+});
+
 //listener:
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}....`);
